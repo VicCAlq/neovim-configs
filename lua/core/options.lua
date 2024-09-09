@@ -2,9 +2,6 @@ local cmd = vim.cmd
 local opt = vim.opt
 local api = vim.api
 
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-
 cmd("filetype plugin indent on")
 cmd([[highlight WinSeparator guibg = None]])
 
@@ -39,13 +36,16 @@ opt.signcolumn = "yes"
 
 opt.pumheight = 15
 opt.cmdheight = 1
+opt.numberwidth = 3
 opt.laststatus = 3
 opt.showtabline = 2
 opt.scrolloff = 10
 opt.sidescrolloff = 5
 
--- opt.fileencoding = "utf-8" -- File Encoding
+opt.fileencoding = "utf-8" -- File Encoding
 opt.clipboard = "unnamedplus"
+opt.completeopt = { "menu", "menuone", "noselect" }
+opt.shortmess:append("c")
 opt.undofile = true
 opt.autochdir = false
 opt.hidden = true

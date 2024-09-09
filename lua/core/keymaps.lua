@@ -1,7 +1,18 @@
-local icons = require("resources.icons")
-local utils = require("core.utils")
+local icons = require "resources.icons"
+local utils = require "core.utils"
+
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 local map = vim.keymap.set
+
+-- Changing default behaviours
+map({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
+map("n", "x", "_x", { silent = true })
+map("n", "c", "_c", { silent = true })
+map("n", "p", "_dP", { silent = true })
+map("n", "n", "nzzzv", { silent = true })
+map("n", "N", "Nzzzv", { silent = true })
 
 -- Movement remaps
 map("n", "j", "gj", { desc = "Move cursor down " })
@@ -22,29 +33,44 @@ map("t", "<C-k>", "<cmd>wincmd k<cr>", { desc = "Terminal up window navigation" 
 map("t", "<C-l>", "<cmd>wincmd l<cr>", { desc = "Terminal right window navigation" })
 
 -- Splits manipulation
+map("n", "<leader>v", "<cmd>vsplit<cr>", { desc = "Split vertically" })
+map("n", "<leader>h", "<cmd>vsplit<cr>", { desc = "Split horizontally" })
 map("n", "<c-j>", "<c-w><c-j>", { desc = "Switch to split below" })
 map("n", "<c-k>", "<c-w><c-k>", { desc = "Switch to split above" })
 map("n", "<c-l>", "<c-w><c-l>", { desc = "Switch to right split" })
 map("n", "<c-h>", "<c-w><c-h>", { desc = "Switch to left split" })
-map("n", "<C-left>", "<c-w>1<", { desc = "Resize split left" })
-map("n", "<C-right>", "<c-w>1>", { desc = "Resize split right" })
-map("n", "<C-up>", "<C-w>+", { desc = "Resize split up" })
-map("n", "<C-down>", "<C-w>-", { desc = "Resize split down" })
+map("n", "<C-left>", "<cmd>resize -2<cr>", { desc = "Resize split left" })
+map("n", "<C-right>", "<cmd>resize +2<cr>", { desc = "Resize split right" })
+map("n", "<C-up>", "<cmd>vertical resize -2<cr>", { desc = "Resize split up" })
+map("n", "<C-down>", "<cmd>vertical resize +2<cr>", { desc = "Resize split down" })
+map("n", "<leader>rh", "<C-w>=", { desc = "Resize splits equally" })
+
+-- Buffer navigation
+map("n", "[b", "<cmd>bprevious<cr>", { desc = "Go to previous buffer" })
+map("n", "]b", "<cmd>bnext<cr>", { desc = "Go to next buffer" })
+map("n", "<leader>c", "<cmd>bdelete<cr>", { desc = "Close current buffer" })
+map("n", "<leader>n", "<cmd>enew<cr>", { desc = "New file" })
 
 -- Code running
 map("n", "<leader>x", "<cmd>.lua<CR>", { desc = "Execute the current line" })
-map("n", "<leader><leader>x", "<cmd>source %<CR>", { desc = "Execute the current file" })
+map("n", "<leader>s", "<cmd>source %<CR>", { desc = "Source/Run the current file" })
 
 -- Diagnostics navigation
-map("n", "]d", utils.fn(vim.diagnostic.jump, { count = 1, float = true }))
-map("n", "[d", utils.fn(vim.diagnostic.jump, { count = -1, float = true }))
+map("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic item" })
+map("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic item" })
+map("n", "<leader>do", vim.diagnostic.open_float, { desc = "Open diagnostic list" })
+map("n", "<leader>dq", vim.diagnostic.setloclist, { desc = "Set diagnostic list" })
 
 -- Standard  operations
-map("n", "<leader>n", "<cmd>enew<cr>", { desc = "New file" })
-map("n", "<leader>v", "<cmd>vsplit<cr>", { desc = "Split vertically" })
-map("n", "<leader>h", "<cmd>vsplit<cr>", { desc = "Split horizontally" })
+map("n", "<leader>w", "<cmd>noautocmd w<cr>", { desc = "Save with no autoformatting" })
 map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "[Q]uickfix list" })
 map("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Remove search highlights on <Esc>" })
+
+-- VimTabs
+map("n", "<leader>to", "<cmd>tabnew<cr>", { desc = "Save with no autoformatting" })
+map("n", "<leader>tx", "<cmd>tabclose<cr>", { desc = "Save with no autoformatting" })
+map("n", "<leader>tn", "<cmd>tabn<cr>", { desc = "Save with no autoformatting" })
+map("n", "<leader>tb", "<cmd>tabp<cr>", { desc = "Save with no autoformatting" })
 
 -- Set local settings for terminal buffers
 vim.api.nvim_create_autocmd("TermOpen", {
@@ -70,7 +96,8 @@ end, { desc = "Open a standard terminal at screen bottom" })
 
 -- NeoTree (Change to mini.files later)
 if utils.is_available("neo-tree.nvim") then
-  map("n", "<leader>e", "<cmd>Neotree toggle<cr>", { desc = icons.TreeFileAlt .. " Toggle NeoTree [E]xplorer" })
+  map("n", "<leader>e", "<cmd>Neotree toggle position=right<cr>",
+    { desc = icons.TreeFileAlt .. " Toggle NeoTree [E]xplorer" })
   map("n", "<leader>o", function()
     if vim.bo.filetype == "neo-tree" then
       vim.cmd.wincmd("p")
