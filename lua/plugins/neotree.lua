@@ -2,23 +2,33 @@
 -- https://github.com/nvim-neo-tree/neo-tree.nvim
 
 return {
-	'nvim-neo-tree/neo-tree.nvim',
-	version = '*',
+	"nvim-neo-tree/neo-tree.nvim",
+	version = "*",
 	dependencies = {
-		'nvim-lua/plenary.nvim',
-		'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
-		'MunifTanjim/nui.nvim',
-		"3rd/image.nvim",              -- Optional image support in preview window: See `# Preview Mode` for more information
+		"nvim-lua/plenary.nvim",
+		"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+		"MunifTanjim/nui.nvim",
+		"3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
 	},
-	cmd = 'Neotree',
+	cmd = "Neotree",
 	keys = {
-		{ '\\',        ':Neotree reveal<CR>',                desc = 'NeoTree reveal', silent = true },
-		{ '<leader>e', ':Neotree toggle position=right<CR>', desc = 'Open Neotree',   silent = true },
-		{ '<leader>o', ':Neotree toggle position=right<CR>', desc = 'Open Neotree',   silent = true },
+		{ "\\", ":Neotree reveal<CR>", desc = "NeoTree reveal", silent = true },
+		{ "<leader>e", ":Neotree toggle position=right<CR>", desc = "Open Neotree", silent = true },
+		{
+			"<leader>o",
+			function()
+				if vim.bo.filetype == "neo-tree" then
+					vim.cmd.wincmd("p")
+				else
+					vim.cmd.Neotree("focus")
+				end
+			end,
+			{ desc = "Toggle Neotre Focus", silent = true },
+		},
 	},
 	opts = function()
-		local utils = require "core.utils"
-		local icons = require "resources.icons"
+		local utils = require("core.utils")
+		local icons = require("resources.icons")
 
 		return {
 			auto_clean_after_session_restore = true,
@@ -29,9 +39,9 @@ return {
 				winbar = true,
 				content_layout = "center",
 				sources = {
-					{ source = "filesystem",  display_name = icons.FolderClosed .. " File" },
-					{ source = "buffers",     display_name = icons.DefaultFile .. " Bufs" },
-					{ source = "git_status",  display_name = icons.Git .. " Git" },
+					{ source = "filesystem", display_name = icons.FolderClosed .. " File" },
+					{ source = "buffers", display_name = icons.DefaultFile .. " Bufs" },
+					{ source = "git_status", display_name = icons.Git .. " Git" },
 					{ source = "diagnostics", display_name = icons.Diagnostic .. " Diagnostic" },
 				},
 			},
@@ -81,7 +91,7 @@ return {
 					if node.type == "directory" or node:has_children() then
 						if not node:is_expanded() then -- if unexpanded, expand
 							state.commands.toggle_node(state)
-						else                     -- if expanded and has children, seleect the next child
+						else -- if expanded and has children, seleect the next child
 							require("neo-tree.ui.renderer").focus_node(state, node:get_child_ids()[1])
 						end
 					else -- if not a directory just open it
@@ -137,6 +147,7 @@ return {
 			},
 
 			window = {
+				position = "right",
 				width = 30,
 				mappings = {
 					["<space>"] = false, -- disable space until we figure out which-key disabling
@@ -160,7 +171,7 @@ return {
 				use_libuv_file_watcher = true,
 				window = {
 					mappings = {
-						['\\'] = 'close_window',
+						["\\"] = "close_window",
 					},
 				},
 			},
