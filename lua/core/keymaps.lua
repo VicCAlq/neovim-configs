@@ -7,7 +7,7 @@ vim.g.maplocalleader = " "
 local map = vim.keymap.set
 
 -- Changing default behaviours
-map({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
+-- map({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 -- map("n", "x", "_x", { silent = true })
 -- map("n", "c", "_c", { silent = true })
 -- map("n", "p", "_dP", { silent = true })
@@ -23,8 +23,8 @@ map("v", "<Tab>", ">gv", { desc = "Indent line" })
 map("v", "<S-Tab>", "<gv", { desc = "Dedent line" })
 
 -- Alternate commenting line
-map("n", "<leader>/", "gcc", { desc = "(un)Comment line" })
-map("v", "<leader>/", "gc", { desc = "(un)Comment line" })
+map("n", "<leader>/", "gcc", { desc = "(un)Comment line", remap = true })
+map("v", "<leader>/", "gc", { desc = "(un)Comment line", remap = true })
 
 -- Terminal navigation
 map("t", "<C-h>", "<cmd>wincmd h<cr>", { desc = "Terminal left window navigation" })

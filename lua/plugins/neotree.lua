@@ -12,8 +12,8 @@ return {
 	},
 	cmd = "Neotree",
 	keys = {
-		{ "\\", ":Neotree reveal<CR>", desc = "NeoTree reveal", silent = true },
-		{ "<leader>e", ":Neotree toggle position=right<CR>", desc = "Open Neotree", silent = true },
+		{ "\\", ":Neotree reveal<CR>", desc = "NeoTree reveal" },
+		{ "<leader>e", ":Neotree toggle<CR>", desc = "Open Neotree" },
 		{
 			"<leader>o",
 			function()
@@ -23,7 +23,7 @@ return {
 					vim.cmd.Neotree("focus")
 				end
 			end,
-			{ desc = "Toggle Neotre Focus", silent = true },
+			{ desc = "Toggle Neotre Focus" },
 		},
 	},
 	opts = function()
