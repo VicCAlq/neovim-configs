@@ -7,6 +7,7 @@ return {
   ArrowAngleFilledLeft = " ",
   ArrowAngleDoubleLeft = " ",
   ArrowAngleRight = " ",
+  ArrowAngleRightShort = "❯",
   ArrowAngleFilledRight = " ",
   ArrowAngleDoubleRight = " ",
   Bolt = "󱐋 ",

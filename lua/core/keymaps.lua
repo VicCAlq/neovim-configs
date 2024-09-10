@@ -8,9 +8,9 @@ local map = vim.keymap.set
 
 -- Changing default behaviours
 map({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
-map("n", "x", "_x", { silent = true })
-map("n", "c", "_c", { silent = true })
-map("n", "p", "_dP", { silent = true })
+-- map("n", "x", "_x", { silent = true })
+-- map("n", "c", "_c", { silent = true })
+-- map("n", "p", "_dP", { silent = true })
 map("n", "n", "nzzzv", { silent = true })
 map("n", "N", "Nzzzv", { silent = true })
 
@@ -33,8 +33,8 @@ map("t", "<C-k>", "<cmd>wincmd k<cr>", { desc = "Terminal up window navigation" 
 map("t", "<C-l>", "<cmd>wincmd l<cr>", { desc = "Terminal right window navigation" })
 
 -- Splits manipulation
-map("n", "<leader>v", "<cmd>vsplit<cr>", { desc = "Split vertically" })
-map("n", "<leader>h", "<cmd>vsplit<cr>", { desc = "Split horizontally" })
+map("n", "<leader>sv", "<cmd>vsplit<cr>", { desc = "Split vertically" })
+map("n", "<leader>sh", "<cmd>vsplit<cr>", { desc = "Split horizontally" })
 map("n", "<c-j>", "<c-w><c-j>", { desc = "Switch to split below" })
 map("n", "<c-k>", "<c-w><c-k>", { desc = "Switch to split above" })
 map("n", "<c-l>", "<c-w><c-l>", { desc = "Switch to right split" })
@@ -43,7 +43,7 @@ map("n", "<C-left>", "<cmd>resize -2<cr>", { desc = "Resize split left" })
 map("n", "<C-right>", "<cmd>resize +2<cr>", { desc = "Resize split right" })
 map("n", "<C-up>", "<cmd>vertical resize -2<cr>", { desc = "Resize split up" })
 map("n", "<C-down>", "<cmd>vertical resize +2<cr>", { desc = "Resize split down" })
-map("n", "<leader>rh", "<C-w>=", { desc = "Resize splits equally" })
+map("n", "<leader>sr", "<C-w>=", { desc = "Resize splits equally" })
 
 -- Buffer navigation
 map("n", "[b", "<cmd>bprevious<cr>", { desc = "Go to previous buffer" })
@@ -52,8 +52,8 @@ map("n", "<leader>c", "<cmd>bdelete<cr>", { desc = "Close current buffer" })
 map("n", "<leader>n", "<cmd>enew<cr>", { desc = "New file" })
 
 -- Code running
-map("n", "<leader>x", "<cmd>.lua<CR>", { desc = "Execute the current line" })
-map("n", "<leader>s", "<cmd>source %<CR>", { desc = "Source/Run the current file" })
+map("n", "<leader>xx", "<cmd>.lua<CR>", { desc = "Execute the current line" })
+map("n", "<leader>xf", "<cmd>source %<CR>", { desc = "Source/Run the current file" })
 
 -- Diagnostics navigation
 map("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic item" })
@@ -67,10 +67,10 @@ map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "[Q]uickfix list" })
 map("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Remove search highlights on <Esc>" })
 
 -- VimTabs
-map("n", "<leader>to", "<cmd>tabnew<cr>", { desc = "Save with no autoformatting" })
-map("n", "<leader>tx", "<cmd>tabclose<cr>", { desc = "Save with no autoformatting" })
-map("n", "<leader>tn", "<cmd>tabn<cr>", { desc = "Save with no autoformatting" })
-map("n", "<leader>tb", "<cmd>tabp<cr>", { desc = "Save with no autoformatting" })
+map("n", "<leader>To", "<cmd>tabnew<cr>", { desc = "Create a new Vim tab" })
+map("n", "<leader>Tx", "<cmd>tabclose<cr>", { desc = "Close this vim Tab" })
+map("n", "<leader>Tn", "<cmd>tabn<cr>", { desc = "Go to next Vim tab" })
+map("n", "<leader>Tb", "<cmd>tabp<cr>", { desc = "Go to previous Vim Tab" })
 
 -- Set local settings for terminal buffers
 vim.api.nvim_create_autocmd("TermOpen", {

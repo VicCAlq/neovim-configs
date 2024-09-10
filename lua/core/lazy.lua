@@ -24,7 +24,7 @@ lazy.setup({
   spec = {
     { import = "plugins" },
   },
-  defaults = { lazy = true },
+  defaults = { lazy = false },
   rocks = { enabled = false },
   -- git = { filter = modern_git },
   lockfile = vim.fn.stdpath("data") .. "/lazy-lock.json",

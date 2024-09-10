@@ -6,7 +6,7 @@ return {
 
   config = function(_, opts)
     local alpha = require "alpha"
-    local dashboard = require "alpha.themes.startify"
+    local dashboard = require "alpha.themes.dashboard"
     local icons = require "resources.icons"
 
     dashboard.section.header.val = {
@@ -48,18 +48,5 @@ return {
     }
 
     alpha.setup(dashboard.opts)
-
-		vim.api.nvim_create_autocmd("User", {
-			pattern = "LazyVimStarted",
-			desc = "Add Alpha dashboard footer",
-			once = true,
-			callback = function()
-				local stats = require("lazy").stats()
-				local ms = math.floor(stats.startuptime * 100 + 0.5) / 100
-				opts.section.footer.val =
-				{ "NeoVim loaded " .. stats.count .. " plugins " .. icons.Plug .. " in" .. ms .. "ms" }
-				pcall(vim.cmd.AlphaRedraw)
-			end,
-		})
   end,
 }

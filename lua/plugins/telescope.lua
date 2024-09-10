@@ -21,11 +21,11 @@ return {
       -- { 'nvim-telescope/telescope-ui-select.nvim' },
 
       -- Useful for getting pretty icons, but requires a Nerd Font.
-      { 'nvim-tree/nvim-web-devicons',            enabled = vim.g.have_nerd_font },
+      { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
     },
     config = function()
-			  local telescope = require "telescope"
-			  local actions = require "telescope.actions"
+      local telescope = require "telescope"
+      local actions = require "telescope.actions"
       -- Telescope is a fuzzy finder that comes with a lot of different things that
       -- it can fuzzy find! It's more than just a "file finder", it can search
       -- many different aspects of Neovim, your workspace, LSP, and more!
@@ -77,20 +77,20 @@ return {
           initial_mode = "insert",
           selection_strategy = "reset",
           sorting_strategy = "ascending",
-					  file_sorter = require("telescope.sorters").get_fuzzy_file,
-					  file_ignore_patterns = {},
-					  generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
-					  path_display = {},
-					  winblend = 0,
-					  border = {},
-					  borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
-					  color_devicons = true,
-					  use_less = true,
-					  set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
-					  file_previewer = require("telescope.previewers").vim_buffer_cat.new,
-					  grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
-					  qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
-					  buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
+          file_sorter = require("telescope.sorters").get_fuzzy_file,
+          file_ignore_patterns = {},
+          generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
+          path_display = {},
+          winblend = 0,
+          border = {},
+          borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+          color_devicons = true,
+          use_less = true,
+          set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
+          file_previewer = require("telescope.previewers").vim_buffer_cat.new,
+          grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
+          qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
+          buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
           mappings = {
             i = {
               ['<C-k>'] = actions.move_selection_previous, -- move to prev result
@@ -100,11 +100,11 @@ return {
               ["<esc>"] = actions.close,
               ["<CR>"] = actions.select_default + actions.center,
             },
-						  n = {
-							  ["<C-k>"] = actions.move_selection_next,
-							  ["<C-j>"] = actions.move_selection_previous,
-							  ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
-						  },
+            n = {
+              ["<C-k>"] = actions.move_selection_next,
+              ["<C-j>"] = actions.move_selection_previous,
+              ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
+            },
           },
         },
         pickers = {
@@ -132,15 +132,16 @@ return {
 
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
-      vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
-      vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
-      vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
-      vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
-      vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
-      vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
-      vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
-      vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
-      vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
+      vim.keymap.set('n', '<leader>ft', function() builtin.colorscheme({ enable_preview = true }) end, { desc = '[F]ind [T]hemes' })
+      vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = '[F]ind [H]elp files' })
+      vim.keymap.set('n', '<leader>fk', builtin.keymaps, { desc = '[F]ind [K]eymaps' })
+      vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = '[F]ind [F]iles' })
+      vim.keymap.set('n', '<leader>fs', builtin.builtin, { desc = '[F]ind [S]elect Telescope' })
+      vim.keymap.set('n', '<leader>fw', builtin.grep_string, { desc = '[F]ind current [W]ord' })
+      vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = '[F]ind by [G]rep' })
+      vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = '[F]ind [D]iagnostics' })
+      vim.keymap.set('n', '<leader>fr', builtin.resume, { desc = '[F]ind [R]esume' })
+      vim.keymap.set('n', '<leader>f.', builtin.oldfiles, { desc = '[F]ind Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
 
       -- Slightly advanced example of overriding default behavior and theme
@@ -154,32 +155,32 @@ return {
 
       -- It's also possible to pass additional configuration options.
       --  See `:help telescope.builtin.live_grep()` for information about particular keys
-      vim.keymap.set('n', '<leader>s/', function()
+      vim.keymap.set('n', '<leader>f/', function()
         builtin.live_grep {
           grep_open_files = true,
           prompt_title = 'Live Grep in Open Files',
         }
-      end, { desc = '[S]earch [/] in Open Files' })
+      end, { desc = '[F]ind [/] in Open Files' })
 
-		  telescope.load_extension("fzf")
+      telescope.load_extension("fzf")
     end,
   },
-	
-	-- telescope ui select extensions
-	{
-		"nvim-telescope/telescope-ui-select.nvim",
-		config = function()
-			local telescope = require("telescope")
-			telescope.setup({
-				extensions = {
-					["ui-select"] = {
-						require("telescope.themes").get_dropdown({
-							-- even more opts
-						}),
-					},
-				},
-			})
-			require("telescope").load_extension("ui-select")
-		end,
-	},
+
+  -- telescope ui select extensions
+  {
+    "nvim-telescope/telescope-ui-select.nvim",
+    config = function()
+      local telescope = require("telescope")
+      telescope.setup({
+        extensions = {
+          ["ui-select"] = {
+            require("telescope.themes").get_dropdown({
+              -- even more opts
+            }),
+          },
+        },
+      })
+      require("telescope").load_extension("ui-select")
+    end,
+  },
 }

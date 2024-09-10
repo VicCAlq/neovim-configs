@@ -50,7 +50,7 @@ return {
     require("lualine").setup {
       options = {
         icons_enabled = true,
-        theme = "kanagawa", -- Set theme based on environment variable
+        theme = "auto", -- Set theme based on environment variable
         -- Some useful glyphs:
         -- https://www.nerdfonts.com/cheat-sheet
         --        

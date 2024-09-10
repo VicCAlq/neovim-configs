@@ -2,18 +2,20 @@
 -- https://github.com/nvim-neo-tree/neo-tree.nvim
 
 return {
-  'nvim-neo-tree/neo-tree.nvim',
-  version = '*',
-  dependencies = {
-    'nvim-lua/plenary.nvim',
-    'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
-    'MunifTanjim/nui.nvim',
-    "3rd/image.nvim",              -- Optional image support in preview window: See `# Preview Mode` for more information
-  },
-  cmd = 'Neotree',
-  keys = {
-    { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
-  },
+	'nvim-neo-tree/neo-tree.nvim',
+	version = '*',
+	dependencies = {
+		'nvim-lua/plenary.nvim',
+		'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
+		'MunifTanjim/nui.nvim',
+		"3rd/image.nvim",              -- Optional image support in preview window: See `# Preview Mode` for more information
+	},
+	cmd = 'Neotree',
+	keys = {
+		{ '\\',        ':Neotree reveal<CR>',                desc = 'NeoTree reveal', silent = true },
+		{ '<leader>e', ':Neotree toggle position=right<CR>', desc = 'Open Neotree',   silent = true },
+		{ '<leader>o', ':Neotree toggle position=right<CR>', desc = 'Open Neotree',   silent = true },
+	},
 	opts = function()
 		local utils = require "core.utils"
 		local icons = require "resources.icons"
@@ -156,11 +158,11 @@ return {
 				follow_current_file = { enabled = true },
 				hijack_netrw_behavior = "open_current",
 				use_libuv_file_watcher = true,
-        window = {
-          mappings = {
-            ['\\'] = 'close_window',
-          },
-        },
+				window = {
+					mappings = {
+						['\\'] = 'close_window',
+					},
+				},
 			},
 			event_handlers = {
 				{

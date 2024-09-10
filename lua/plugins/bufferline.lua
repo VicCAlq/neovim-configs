@@ -34,7 +34,7 @@ return {
         show_tab_indicators = true,
         indicator = {
           icon = icons.Mark,
-          style = "underline",
+          style = "none",
         },
         icon_pinned = icons.Pin,
         minimum_padding = 1,
