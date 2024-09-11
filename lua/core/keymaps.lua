@@ -1,6 +1,7 @@
 local icons = require("resources.icons")
 local utils = require("core.utils")
 
+-- Setting leader key to space
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
@@ -11,6 +12,8 @@ local map = vim.keymap.set
 -- map("n", "x", "_x", { silent = true })
 -- map("n", "c", "_c", { silent = true })
 -- map("n", "p", "_dP", { silent = true })
+
+-- Center items on "n" navigtion
 map("n", "n", "nzzzv", { silent = true })
 map("n", "N", "Nzzzv", { silent = true })
 
@@ -72,44 +75,20 @@ map("n", "<leader>Tx", "<cmd>tabclose!<cr>", { desc = "Close this vim Tab" })
 map("n", "<leader>Tn", "<cmd>tabn<cr>", { desc = "Go to next Vim tab" })
 map("n", "<leader>Tb", "<cmd>tabp<cr>", { desc = "Go to previous Vim Tab" })
 
--- Set local settings for terminal buffers
-vim.api.nvim_create_autocmd("TermOpen", {
-	group = vim.api.nvim_create_augroup("custom-term-open", {}),
-	callback = function()
-		vim.opt_local.number = true
-		vim.opt_local.relativenumber = true
-		vim.opt_local.scrolloff = 0
-
-		vim.bo.filetype = "terminal"
-	end,
-})
+-- Terminal
 -- Easily hit escape in terminal mode.
 map("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Escape terminal mode" })
 -- Open a terminal at the bottom of the screen with a fixed height.
 map("n", "<leader>ts", function()
-	vim.cmd.new()
-	vim.cmd.wincmd("J")
-	vim.api.nvim_win_set_height(0, 10)
-	vim.wo.winfixheight = true
-	vim.cmd.terminal()
+  vim.cmd.new()
+  vim.cmd.wincmd("J")
+  vim.api.nvim_win_set_height(0, 10)
+  vim.wo.winfixheight = true
+  vim.cmd.terminal()
 end, { desc = "Open a standard terminal at screen bottom" })
 
--- NeoTree (Change to mini.files later)
-if utils.is_available("neo-tree.nvim") then
-	map(
-		"n",
-		"<leader>e",
-		"<cmd>Neotree toggle position=right<cr>",
-		{ desc = icons.TreeFileAlt .. " Toggle NeoTree [E]xplorer" }
-	)
-	map("n", "<leader>o", function()
-		if vim.bo.filetype == "neo-tree" then
-			vim.cmd.wincmd("p")
-		else
-			vim.cmd.Neotree("focus")
-		end
-	end, { desc = icons.TreeFileAlt .. " Toggle NeoTree [E]xplorer" })
-else
-	map("n", "<leader>e", "<cmd>Vex<cr><cmd>cd %:h<cr>", { desc = "Opens NetRW on current buffer's location" })
-	map("n", "<leader>o", "<cmd>Lex<cr><cmd>cd %:h<cr>", { desc = "Opens NetRW on current buffer's location" })
+-- NetRW mappings (in case NeoTree is disabled for some reason)
+if not utils.is_available("neo-tree.nvim") then
+  map("n", "<leader>e", "<cmd>Vex<cr><cmd>cd %:h<cr>", { desc = "Opens NetRW on current buffer's location" })
+  map("n", "<leader>o", "<cmd>Lex<cr><cmd>cd %:h<cr>", { desc = "Opens NetRW on current buffer's location" })
 end
