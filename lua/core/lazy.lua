@@ -14,7 +14,7 @@ end
 ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
--- Checking Lazy's status
+-- Checking Lazy"s status
 local installed, lazy = pcall(require, "lazy")
 if not installed then
   return
@@ -28,7 +28,7 @@ lazy.setup({
   defaults = { lazy = false },
   rocks = { enabled = false },
   lockfile = vim.fn.stdpath("data") .. "/lazy-lock.json",
-  -- lazy's ui configs
+  -- lazy"s ui configs
   ui = {
     border = "rounded",
   },

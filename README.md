@@ -20,18 +20,26 @@ This is a comprehensive list to showcase what's available from the get-go:
 - [cmp-buffer](github.com/hrsh7th/cmp-buffer) - Nvim-cmp source for buffer words
 - [cmp-path](github.com/hrsh7th/cmp-path) - Nvim-cmp source for filesystem paths
 - [nvim-lspconfig](github.com/nvim-lspconfig) - Quickstart configs for Nvim LSP
-- [mason](github.com/williamboman/mason.nvim) - A
-- [mason-lspconfig](github.com/williamboman/mason-lspconfig.nvim) - A
-- [mason-tool-installer](github.com/WhoIsSethDaniel/mason-tool-installer.nvim) - A
-- [fidget](github.com/j-hui/fidget.nvim) - A
-- [cmp-nvim-lsp](github.com/hrsh7th/cmp-nvim-lsp) - A
-- [lspsaga](github.com/glepnir/lspsaga.nvim) - A
-- [treesitter](github.com/nvim-treesitter/nvim-treesitter) - A
-- [treesitter-context](github.com/nvim-treesitter/nvim-treesitter-context) - A
-- [treesitter-textobjects](github.com/nvim-treesitter/nvim-treesitter-textobjects) - A
-- [none-ls](github.com/nvimtools/none-ls.nvim) - A
-- [none-ls-extras](github.com/nvimtools/none-ls-extras.nvim) - A
-- [mason-null-ls](github.com/jayp0521/mason-null-ls.nvim) - A
+- [mason](github.com/williamboman/mason.nvim) - Easily install and manage LSP servers, DAP servers, linters, and formatters.
+- [mason-lspconfig](github.com/williamboman/mason-lspconfig.nvim) - Extension to mason.nvim that makes it easier to use lspconfig with mason.
+- [mason-tool-installer](github.com/WhoIsSethDaniel/mason-tool-installer.nvim) - Install and upgrade third party tools automatically.
+- [fidget](github.com/j-hui/fidget.nvim) - Extensible UI for Neovim notifications and LSP progress messages.
+- [cmp-nvim-lsp](github.com/hrsh7th/cmp-nvim-lsp) - Nvim-cmp source for neovim builtin LSP client.
+- [lspsaga](github.com/glepnir/lspsaga.nvim) - Improve neovim lsp experience.
+- [treesitter](github.com/nvim-treesitter/nvim-treesitter) - Nvim Treesitter configurations and abstraction layer.
+- [treesitter-context](github.com/nvim-treesitter/nvim-treesitter-context) - Lightweight alternative to context.vim.
+- [treesitter-textobjects](github.com/nvim-treesitter/nvim-treesitter-textobjects) - Syntax aware text-objects, select, move, swap, and peek support.
+- [none-ls](github.com/nvimtools/none-ls.nvim) - Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua.
+- [none-ls-extras](github.com/nvimtools/none-ls-extras.nvim) - Extra sources for none-ls.nvim.
+- [mason-null-ls](github.com/jayp0521/mason-null-ls.nvim) - Mason-null-ls.nvim closes some gaps that exist between mason.nvim and null-ls.
+
+#### Visuals and layout
+
+- [nvim-web-devicons](github.com/nvim-tree/nvim-web-devicons) - Lua fork of vim-web-devicons for neovim.
+- [mini.icons](github.com/echasnovski/mini.icons) - Icon provider. Part of 'mini.nvim' library.
+- [netrw](github.com/prichrd/netrw.nvim) - Adds modern features and visuals to NetRW.
+- [alpha](github.com/goolord/alpha-nvim) - A fast and fully programmable greeter for neovim.
+- [ ](github.com/) -
 - [ ](github.com/) - A
 - [ ](github.com/) - A
 - [ ](github.com/) - A
@@ -40,10 +48,16 @@ This is a comprehensive list to showcase what's available from the get-go:
 - [ ](github.com/) - A
 - [ ](github.com/) - A
 - [ ](github.com/) - A
-- [ ](github.com/) - A
-- [ ](github.com/) - A
-- [ ](github.com/) - A
-- [ ](github.com/) - A
+
+#### Functionality
+
+- [aerial](github.com/stevearc/aerial.nvim) - A code outline window for skimming and quick navigation.
+- [autopairs](github.com/windwp/nvim-autopairs) - Autopairs for neovim written in lua.
+- [better-escape](github.com/max397574/better-escape.nvim) - Map keys without delay when typing
+- [colorizer](github.com/norcalli/nvim-colorizer.lua) - A high-performance color highlighter for Neovim.
+- [fugitive](github.com/tpope/vim-fugitive) - A git wrapper.
+- [rhubarb](github.com/tpope/vim-rhubarb) - Extension for Fugitive.
+- [git-blame](github.com/f-person/git-blame.nvim) - Git blame plugin.
 - [ ](github.com/) - A
 - [ ](github.com/) - A
 - [ ](github.com/) - A
@@ -56,3 +70,4 @@ This is a comprehensive list to showcase what's available from the get-go:
 [ ]- [Compiler](github.com/Zeioth/compiler.nvim): Neovim compiler for building and running your code without having to configure anything.
 [ ]- [DAP](github.com/mfussenegger/nvim-dap): Debug Adapter Protocol client implementation for NeoVim.
 [ ]- [NeoTest](github.com/nvim-neotest/neotest): A framework for interacting with tests within NeoVim.
+[ ]- [DadBod](https://github.com/tpope/vim-dadbod): Modern database interface for Vim.

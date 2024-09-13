@@ -49,9 +49,10 @@ map("n", "<C-right>", "<cmd>vertical resize +2<cr>", { desc = "Resize split righ
 map("n", "<leader>sr", "<C-w>=", { desc = "Resize splits equally" })
 
 -- Buffer navigation
-map("n", "[b", "<cmd>bprevious<cr>", { desc = "Go to previous buffer" })
-map("n", "]b", "<cmd>bnext<cr>", { desc = "Go to next buffer" })
-map("n", "<leader>c", "<cmd>bdelete!<cr>", { desc = "Close current buffer" })
+--  NOTE: buffer cycling handled by BufferLine now
+-- map("n", "[b", "<cmd>bprevious<cr>", { desc = "Go to previous buffer" })
+-- map("n", "]b", "<cmd>bnext<cr>", { desc = "Go to next buffer" })
+map("n", "<leader>c", ":bp | sp | bn | bd<CR>", { desc = "Close all other buffers", remap = true, silent = true })
 map("n", "<leader>n", "<cmd>enew<cr>", { desc = "New file" })
 
 -- Code running

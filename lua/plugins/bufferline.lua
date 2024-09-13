@@ -6,6 +6,7 @@ return {
   },
   config = function()
     local icons = require("resources.icons")
+    local map = vim.keymap.set
 
     require("bufferline").setup({
       options = {
@@ -46,8 +47,15 @@ return {
             bold = true,
             italic = true,
           },
-        }
-      }
+        },
+      },
     })
+
+    map("n", "<b", ":BufferLineMovePrev<CR>", { desc = "Move current buffer left", remap = true })
+    map("n", ">b", ":BufferLineMoveNext<CR>", { desc = "Move current buffer right", remap = true })
+    map("n", "[b", ":BufferLineCyclePrev<CR>", { desc = "Cycle to previous buffer", remap = true })
+    map("n", "]b", ":BufferLineCycleNext<CR>", { desc = "Cycle to next buffer", remap = true })
+    map("n", "<leader>C", ":BufferLineCloseOthers<CR>", { desc = "Close all other buffers", remap = true })
+    map("n", "<leader>p", ":BufferLineTogglePin<CR>", { desc = "(un)[P]in current buffer", remap = true })
   end,
 }
