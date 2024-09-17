@@ -16,7 +16,7 @@ return { -- Autocompletion
       dependencies = {
         -- `friendly-snippets` contains a variety of premade snippets.
         --    See the README about individual language/framework/plugin snippets:
-        --    https://github.com/rafamadriz/friendly-snippets
+        --    https://gitlab.com/rafamadriz/friendly-snippets
         {
           "rafamadriz/friendly-snippets",
           config = function()
@@ -127,7 +127,7 @@ return { -- Autocompletion
         ["<CR>"] = cmp.mapping.confirm({ select = true }),
 
         -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
-        --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
+        --    https://gitlab.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
         -- Select next/previous item with Tab / Shift + Tab
         ["<Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then

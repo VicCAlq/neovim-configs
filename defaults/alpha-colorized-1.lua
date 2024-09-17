@@ -1,4 +1,4 @@
--- By github.com/Purtl
+-- By gitlab.com/Purtl
 return {
   "goolord/alpha-nvim",
   dependencies = {

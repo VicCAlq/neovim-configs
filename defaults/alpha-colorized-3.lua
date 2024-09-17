@@ -1,4 +1,4 @@
--- By github.com/ochi12
+-- By gitlab.com/ochi12
 local function getLen(str, start_pos)
 	local byte = string.byte(str, start_pos)
 	if not byte then
