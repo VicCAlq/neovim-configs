@@ -25,7 +25,7 @@ return {
       icons = {
         rules = false,
         -- breadcrumb = " ", -- symbol used in the command line area that shows your active key combo
-        group = icons.Ellipsis, -- symbol prepended to a group
+        group = icons.Ellipsis .. "  ", -- symbol prepended to a group
         separator = icons.Selected, -- symbol used between a key and it's label
       },
       show_keys = false,
@@ -51,7 +51,7 @@ return {
         { "<leader>t", group = "[T]erminals" },
         { "<leader>x", group = "E[X]ecute" },
         { "<leader>l", group = "[L]SP actions" },
-        -- 	{ "<leader>s", group = "Sessions" },
+        { "<leader>S", group = "[S]essions" },
         -- 	{ "<leader>e", group = "File Tree" },
         -- 	{ "<leader>u", group = "Undotree" },
         -- 	{ "<leader>o", group = "Options Commands" },
