@@ -62,8 +62,8 @@ map("n", "<leader>xf", "<cmd>source %<CR>", { desc = "Source/Run the current fil
 -- Diagnostics navigation
 map("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic item" })
 map("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic item" })
-map("n", "<leader>do", vim.diagnostic.open_float, { desc = "Open diagnostic list" })
-map("n", "<leader>dq", vim.diagnostic.setloclist, { desc = "Set diagnostic list" })
+map("n", "<leader>ld", vim.diagnostic.open_float, { desc = "Open diagnostic list" })
+map("n", "<leader>lq", vim.diagnostic.setloclist, { desc = "Set diagnostic list" })
 
 -- Standard  operations
 map("n", "<leader>w", "<cmd>noautocmd w<cr>", { desc = "Save with no autoformatting" })
