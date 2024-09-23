@@ -3,6 +3,7 @@ return {
     "lukas-reineke/headlines.nvim",
     dependencies = "nvim-treesitter/nvim-treesitter",
     lazy = false,
+    event = "VimEnter",
     opts = function()
       return {
         markdown = {

@@ -1,13 +1,14 @@
 return {
   "goolord/alpha-nvim",
+  lazy = false,
   dependencies = {
     "nvim-tree/nvim-web-devicons",
   },
 
   config = function(_, opts)
-    local alpha = require "alpha"
-    local dashboard = require "alpha.themes.dashboard"
-    local icons = require "resources.icons"
+    local alpha = require("alpha")
+    local dashboard = require("alpha.themes.dashboard")
+    local icons = require("resources.icons")
 
     dashboard.section.header.val = {
       [[                                                                                        ]],

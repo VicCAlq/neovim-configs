@@ -1,5 +1,6 @@
 return {
   "lukas-reineke/indent-blankline.nvim",
+  event = "VimEnter",
   main = "ibl",
   opts = {
     indent = {

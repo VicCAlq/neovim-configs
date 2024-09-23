@@ -1,7 +1,8 @@
 return {
   "nvim-lualine/lualine.nvim",
+  lazy = false,
   config = function()
-    local icons = require "resources.icons"
+    local icons = require("resources.icons")
 
     local mode = {
       "mode",
@@ -47,7 +48,7 @@ return {
       cond = hide_in_width,
     }
 
-    require("lualine").setup {
+    require("lualine").setup({
       options = {
         icons_enabled = true,
         theme = "auto", -- Set theme based on environment variable
@@ -73,7 +74,7 @@ return {
           diagnostics,
           diff,
           { "encoding", cond = hide_in_width },
-          { "filetype", cond = hide_in_width }
+          { "filetype", cond = hide_in_width },
         },
         lualine_y = { "location" },
         lualine_z = { "progress" },
@@ -88,6 +89,6 @@ return {
       },
       tabline = {},
       extensions = { "fugitive" },
-    }
+    })
   end,
 }

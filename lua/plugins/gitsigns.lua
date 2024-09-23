@@ -1,6 +1,7 @@
 -- Adds git related signs to the gutter, as well as utilities for managing changes
 return {
   "lewis6991/gitsigns.nvim",
+  event = "BufEnter",
   opts = function(_, opts)
     local icons = require("resources.icons")
 

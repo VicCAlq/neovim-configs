@@ -1,6 +1,6 @@
 return {
   "folke/trouble.nvim",
-  lazy = false,
+  event = "VeryLazy",
   opts = {}, -- for default options, refer to the configuration section for custom setup.
   cmd = "Trouble",
   keys = {
