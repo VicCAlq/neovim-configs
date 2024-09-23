@@ -1,3 +1,3 @@
 return {
-  { "lambdalisue/suda.vim", name = "suda", lazy = false },
+  { "lambdalisue/suda.vim", name = "suda", event = "VeryLazy" },
 }

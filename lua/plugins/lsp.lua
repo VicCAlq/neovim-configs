@@ -1,10 +1,12 @@
 return {
   -- Main LSP Configuration
   "neovim/nvim-lspconfig",
+  event = { "VimEnter", "BufReadPre", "BufNewFile" },
   dependencies = {
     -- Automatically install LSPs and related tools to stdpath for Neovim
     {
       "williamboman/mason.nvim",
+      lazy = false,
       opts = {
         ui = {
           border = "rounded",

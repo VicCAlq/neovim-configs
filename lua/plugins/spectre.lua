@@ -1,3 +1,3 @@
 return {
-  { "nvim-pack/nvim-spectre", name = "spectre", lazy = false },
+  { "nvim-pack/nvim-spectre", name = "spectre", event = "VeryLazy" },
 }

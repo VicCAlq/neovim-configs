@@ -1,5 +1,6 @@
 return { -- Highlight, edit, and navigate code
   "nvim-treesitter/nvim-treesitter",
+  event = "VimEnter",
   build = ":TSUpdate",
   dependencies = {
     "nvim-treesitter/nvim-treesitter-context",

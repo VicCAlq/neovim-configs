@@ -25,7 +25,7 @@ lazy.setup({
   spec = {
     { import = "plugins" },
   },
-  defaults = { lazy = false },
+  defaults = { lazy = true },
   rocks = { enabled = false },
   lockfile = vim.fn.stdpath("data") .. "/lazy-lock.json",
   -- lazy"s ui configs
