@@ -1,3 +1,8 @@
 return {
-  { "dstein64/nvim-scrollview", name = "scrollview", event = "VeryLazy", priority = 1000 },
+  {
+    "dstein64/nvim-scrollview",
+    name = "scrollview",
+    lazy = false,
+    priority = 1000,
+  },
 }
