@@ -31,7 +31,14 @@ return {
       no_auto_close = false, -- Never closes the window automatically.
       hidden = false, -- Hide the generation window (if true, will implicitly set `prompt.replace = true`), requires Neovim >= 0.10
       init = function(options)
-        pcall(io.popen, "ollama-init > /dev/null 2>&1 &")
+        local ollama_status, _ = pcall(io.popen, "ollama-init > /dev/null 2>&1 &")
+        if not ollama_status then
+          pcall(
+            io.popen,
+            "docker run -d -v ollama:/root/.ollama -p 11434:11434 --name ollama ollama/ollama > /dev/null 2>&1 &"
+          )
+          pcall(io.popen, "ollama-init > /dev/null 2>&1 &")
+        end
       end,
       -- Function to initialize Ollama
       command = function(options)
