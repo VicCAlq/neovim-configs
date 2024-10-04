@@ -56,7 +56,7 @@ return {
     map("n", ">b", ":BufferLineMoveNext<CR>", { desc = "Move current buffer right", remap = true })
     map("n", "[b", ":BufferLineCyclePrev<CR>", { desc = "Cycle to previous buffer", remap = true })
     map("n", "]b", ":BufferLineCycleNext<CR>", { desc = "Cycle to next buffer", remap = true })
-    map("n", "<leader>C", ":BufferLineCloseOthers<CR>", { desc = "Close all other buffers", remap = true })
-    map("n", "<leader>p", ":BufferLineTogglePin<CR>", { desc = "(un)[P]in current buffer", remap = true })
+    map("n", "<leader>bc", ":BufferLineCloseOthers<CR>", { desc = "Close all other buffers", remap = true })
+    map("n", "<leader>bp", ":BufferLineTogglePin<CR>", { desc = "(un)[P]in current buffer", remap = true })
   end,
 }

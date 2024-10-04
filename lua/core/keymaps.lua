@@ -52,7 +52,7 @@ map("n", "<leader>sr", "<C-w>=", { desc = "Resize splits equally" })
 --  NOTE: buffer cycling handled by BufferLine now
 -- map("n", "[b", "<cmd>bprevious<cr>", { desc = "Go to previous buffer" })
 -- map("n", "]b", "<cmd>bnext<cr>", { desc = "Go to next buffer" })
-map("n", "<leader>c", ":bp | sp | bn | bd<CR>", { desc = "Close all other buffers", remap = true, silent = true })
+map("n", "<leader>c", ":bp | sp | bn | bd<CR>", { desc = "Close current buffer", remap = true, silent = true })
 map("n", "<leader>n", "<cmd>enew<cr>", { desc = "New file" })
 
 -- Code running
