@@ -33,10 +33,7 @@ return {
       init = function(options)
         local ollama_status, _ = pcall(io.popen, "ollama-init > /dev/null 2>&1 &")
         if not ollama_status then
-          pcall(
-            io.popen,
-            "docker run -d -v ollama:/root/.ollama -p 11434:11434 --name ollama ollama/ollama > /dev/null 2>&1 &"
-          )
+          pcall(io.popen, "docker start ollama")
           pcall(io.popen, "ollama-init > /dev/null 2>&1 &")
         end
       end,
