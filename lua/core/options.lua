@@ -19,13 +19,18 @@ vim.g.netrw_browse_split = 4
 vim.g.netrw_altv = 1
 vim.g.netrw_clipboard = 0
 vim.g.netrw_fastbrowse = 2
+-- Tells me if there is the line is wrapped
+vim.g.showbreak = "↪"
+-- Syntax highlighting in strings for augroups, lua, perl, python, javascript.
+-- Useful if you are doing stuff like generating SQL/HTML/XML in strings
+vim.g.vimsyn_embed = "alpPrj"
 
 opt.pumheight = 15
 opt.cmdheight = 1
 opt.numberwidth = 3
 opt.laststatus = 3
 opt.showtabline = 2
-opt.scrolloff = 10
+opt.scrolloff = 5
 opt.sidescrolloff = 5
 
 -- Behaviour settings
@@ -36,17 +41,23 @@ opt.showmode = false
 opt.termguicolors = true
 opt.cursorline = true
 opt.cursorcolumn = false
+-- Set a colorcolumn, I like mine at 120
+opt.colorcolumn = "120"
 opt.signcolumn = "yes"
+opt.showmatch = true
 
 opt.fileencoding = "utf-8" -- File Encoding
 opt.clipboard = "unnamedplus"
 opt.completeopt = { "menu", "menuone", "noselect" }
-opt.shortmess:append("c")
 opt.undofile = true
 opt.autochdir = false
 opt.hidden = true
 opt.splitright = true
 opt.splitbelow = true
+-- Where to keep the cursor when opening a horizontal split
+opt.splitkeep = "screen"
+-- Options for the starting screen on neovim. See :h shortmess for detail
+opt.shortmess = "tToOCFc"
 
 -- Delay-related settings
 opt.updatetime = 250
@@ -59,6 +70,9 @@ opt.smartcase = true
 
 opt.list = true
 opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+-- Show highlighted search terms as you type
+opt.incsearch = true
+-- Preview substitutions live, as you type!
 opt.inccommand = "split"
 opt.whichwrap = "b,s,<,>,[,]"
 opt.backspace = "indent,eol,start"
@@ -79,6 +93,8 @@ opt.smarttab = true
 -- Backup settings
 opt.backup = false
 opt.writebackup = true
+-- Disable swap file, allows file to edited by different windows
+opt.swapfile = false
 
 -- Keep cursor unchanged after quiting
 api.nvim_create_autocmd("ExitPre", {
@@ -101,7 +117,7 @@ api.nvim_create_autocmd("FileType", {
 api.nvim_create_autocmd("FileType", {
   pattern = "*",
   callback = function()
-    vim.opt_local.formatoptions:remove({ "r", "o" })
+    vim.opt_local.formatoptions:remove({ "o" })
   end,
 })
 
