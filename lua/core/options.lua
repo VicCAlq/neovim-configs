@@ -134,17 +134,13 @@ vim.api.nvim_create_autocmd("TermOpen", {
 })
 
 -- Set background color to transparent
-vim.api.nvim_command([[
-  augroup ChangeBackgroudColour
-    autocmd colorscheme * :hi normal ctermbg=none guibg=none
-    " -- autocmd colorscheme * :hi normal ctermbg=Black guibg=#050607
-    " -- autocmd colorscheme * :hi normal ctermbg=none guibg=#050607
-  augroup END
-]])
-
 -- Apply custom italic/bold settings when changing colorschemes
-api.nvim_create_autocmd("ColorScheme", {
+api.nvim_create_autocmd({ "VimEnter", "ColorScheme", "ColorSchemePre" }, {
   callback = function()
     utils.set_new_hl()
+    vim.cmd(":hi Normal ctermbg=none guibg=none guisp=none")
+    vim.cmd(":hi EndOfBuffer ctermbg=none guibg=none guisp=none")
+    vim.cmd(":hi PmenuSbar ctermbg=none guibg=none guisp=none")
+    vim.cmd(":hi NormalNC ctermbg=none guibg=none guisp=none")
   end,
 })

@@ -29,7 +29,7 @@ return {
       show_prompt = true, -- Shows the prompt submitted to Ollama.
       show_model = true, -- Displays which model you are using at the beginning of your chat session.
       no_auto_close = false, -- Never closes the window automatically.
-      hidden = false, -- Hide the generation window (if true, will implicitly set `prompt.replace = true`), requires Neovim >= 0.10
+      hidden = true, -- Hide the generation window (if true, will implicitly set `prompt.replace = true`), requires Neovim >= 0.10
       init = function(options)
         local ollama_status, _ = pcall(io.popen, "ollama-init > /dev/null 2>&1 &")
         if not ollama_status then
