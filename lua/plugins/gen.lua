@@ -6,6 +6,16 @@ return {
     local gen = require("gen")
     local map = vim.keymap.set
 
+    gen.prompts["Generate_Code"] = {
+      prompt = "Generate a code that will $input. Only output the result in format ```$filetype\n...\n```\n",
+      replace = true,
+      extract = "```$filetype\n(.-)```",
+    }
+    gen.prompts["Generate_Text"] = {
+      prompt = "Generate a text about $input, just output the final text without additional quotes around it:\n$text",
+      replace = true,
+    }
+
     map({ "n", "v" }, "<leader>gm", function()
       gen.select_model()
     end, { desc = "Change [M]odel" })
@@ -16,7 +26,9 @@ return {
     map({ "n", "v" }, "<leader>gg", ":Gen Enhance_Grammar_Spelling<CR>", { desc = "Attempt to enhance [G]rammar" })
     map({ "n", "v" }, "<leader>gw", ":Gen Enhance_Wording<CR>", { desc = "Attempt to enhance [W]ording" })
     map({ "n", "v" }, "<leader>gl", ":Gen Make_List<CR>", { desc = "Format to markdown [L]ist" })
-    map({ "n", "v" }, "<leader>gt", ":Gen Make_Table<CR>", { desc = "Format to markdown [T]able" })
+    map({ "n", "v" }, "<leader>gT", ":Gen Make_Table<CR>", { desc = "Format to markdown [T]able" })
+    map({ "n", "v" }, "<leader>gg", ":Gen Generate_Code<CR>", { desc = "[G]enerate code that..." })
+    map({ "n", "v" }, "<leader>gt", ":Gen Generate_Text<CR>", { desc = "[G]enerate [T]ext that..." })
 
     require("gen").setup({
       model = "qwen2:1.5b", -- The default model to use.

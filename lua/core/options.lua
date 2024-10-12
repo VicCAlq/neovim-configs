@@ -1,4 +1,5 @@
 local utils = require("core.utils")
+local icons = require("resources.icons")
 local cmd = vim.cmd
 local opt = vim.opt
 local api = vim.api
@@ -134,17 +135,40 @@ vim.api.nvim_create_autocmd("TermOpen", {
 })
 
 -- Set background color to transparent
-vim.api.nvim_command([[
-  augroup ChangeBackgroudColour
-    autocmd colorscheme * :hi normal ctermbg=none guibg=none
-    " -- autocmd colorscheme * :hi normal ctermbg=Black guibg=#050607
-    " -- autocmd colorscheme * :hi normal ctermbg=none guibg=#050607
-  augroup END
-]])
-
 -- Apply custom italic/bold settings when changing colorschemes
-api.nvim_create_autocmd("ColorScheme", {
+api.nvim_create_autocmd({ "VimEnter", "ColorScheme", "ColorSchemePre" }, {
   callback = function()
     utils.set_new_hl()
+    vim.cmd(":hi Normal ctermbg=none guibg=none guisp=none")
+    vim.cmd(":hi EndOfBuffer ctermbg=none guibg=none guisp=none")
+    vim.cmd(":hi PmenuSbar ctermbg=none guibg=none guisp=none")
+    vim.cmd(":hi NormalNC ctermbg=none guibg=none guisp=none")
+  end,
+})
+
+api.nvim_create_autocmd({ "BufEnter", "WinEnter" }, {
+  callback = function()
+    local separator = " " .. icons.l1 .. " "
+    opt.statuscolumn = '%s%=%#LineNr4#%{(v:relnum >= 4)?v:relnum."'
+      .. separator
+      .. '":""}'
+      .. '%#LineNr3#%{(v:relnum == 3)?v:relnum."'
+      .. separator
+      .. '":""}'
+      .. '%#LineNr2#%{(v:relnum == 2)?v:relnum."'
+      .. separator
+      .. '":""}'
+      .. '%#LineNr1#%{(v:relnum == 1)?v:relnum."'
+      .. separator
+      .. '":""}'
+      .. '%#LineNr0#%{(v:relnum == 0)?v:lnum." '
+      .. separator
+      .. '":""}'
+
+    vim.cmd("highlight LineNr0 guifg=#d0e0c0")
+    vim.cmd("highlight LineNr1 guifg=#b0c0b0")
+    vim.cmd("highlight LineNr2 guifg=#90a0a0")
+    vim.cmd("highlight LineNr3 guifg=#657080")
+    vim.cmd("highlight LineNr4 guifg=#405060")
   end,
 })
