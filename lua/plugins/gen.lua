@@ -6,6 +6,16 @@ return {
     local gen = require("gen")
     local map = vim.keymap.set
 
+    gen.prompts["Generate_Code"] = {
+      prompt = "Generate a code that will $input. Only output the result in format ```$filetype\n...\n```\n",
+      replace = true,
+      extract = "```$filetype\n(.-)```",
+    }
+    gen.prompts["Generate_Text"] = {
+      prompt = "Generate a text about $input, just output the final text without additional quotes around it:\n$text",
+      replace = true,
+    }
+
     map({ "n", "v" }, "<leader>gm", function()
       gen.select_model()
     end, { desc = "Change [M]odel" })
@@ -16,7 +26,9 @@ return {
     map({ "n", "v" }, "<leader>gg", ":Gen Enhance_Grammar_Spelling<CR>", { desc = "Attempt to enhance [G]rammar" })
     map({ "n", "v" }, "<leader>gw", ":Gen Enhance_Wording<CR>", { desc = "Attempt to enhance [W]ording" })
     map({ "n", "v" }, "<leader>gl", ":Gen Make_List<CR>", { desc = "Format to markdown [L]ist" })
-    map({ "n", "v" }, "<leader>gt", ":Gen Make_Table<CR>", { desc = "Format to markdown [T]able" })
+    map({ "n", "v" }, "<leader>gT", ":Gen Make_Table<CR>", { desc = "Format to markdown [T]able" })
+    map({ "n", "v" }, "<leader>gg", ":Gen Generate_Code<CR>", { desc = "[G]enerate code that..." })
+    map({ "n", "v" }, "<leader>gt", ":Gen Generate_Text<CR>", { desc = "[G]enerate [T]ext that..." })
 
     require("gen").setup({
       model = "qwen2:1.5b", -- The default model to use.
@@ -29,7 +41,7 @@ return {
       show_prompt = true, -- Shows the prompt submitted to Ollama.
       show_model = true, -- Displays which model you are using at the beginning of your chat session.
       no_auto_close = false, -- Never closes the window automatically.
-      hidden = true, -- Hide the generation window (if true, will implicitly set `prompt.replace = true`), requires Neovim >= 0.10
+      hidden = false, -- Hide the generation window (if true, will implicitly set `prompt.replace = true`), requires Neovim >= 0.10
       init = function(options)
         local ollama_status, _ = pcall(io.popen, "ollama-init > /dev/null 2>&1 &")
         if not ollama_status then

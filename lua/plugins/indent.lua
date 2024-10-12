@@ -1,30 +1,9 @@
+local icons = require("resources.icons")
+
 return {
   "lukas-reineke/indent-blankline.nvim",
   event = "VimEnter",
   main = "ibl",
-  ---@module "ibl"
-  ---@type ibl.config
-  opts = {
-    indent = {
-      char = "▏",
-      scope = {
-        show_start = true,
-        show_end = true,
-        show_exact_scope = false,
-      },
-      exclude = {
-        filetypes = {
-          "help",
-          "startify",
-          "dashboard",
-          "packer",
-          "neogitstatus",
-          "NvimTree",
-          "Trouble",
-        },
-      },
-    },
-  },
   config = function()
     local ibl = require("ibl")
 
@@ -53,8 +32,33 @@ return {
     end)
 
     vim.g.rainbow_delimiters = { highlight = highlight }
-    ibl.setup({ scope = { highlight = highlight } })
 
     hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
+
+    ---@module "ibl"
+    ---@type ibl.config
+    ibl.setup({
+      indent = {
+        char = "┆",
+        tab_char = "┆",
+      },
+      scope = {
+        highlight = highlight,
+        show_start = true,
+        show_end = true,
+        show_exact_scope = false,
+      },
+      exclude = {
+        filetypes = {
+          "help",
+          "startify",
+          "dashboard",
+          "packer",
+          "neogitstatus",
+          "NvimTree",
+          "Trouble",
+        },
+      },
+    })
   end,
 }
