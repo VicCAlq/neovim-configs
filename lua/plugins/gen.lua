@@ -19,6 +19,7 @@ return {
     map({ "n", "v" }, "<leader>gm", function()
       gen.select_model()
     end, { desc = "Change [M]odel" })
+    map({ "n", "v" }, "<leader>gs", ":!docker start ollama<CR>", { desc = "Open Ollama's [C]hat" })
     map({ "n", "v" }, "<leader>gc", ":Gen Chat<CR>", { desc = "Open Ollama's [C]hat" })
     map({ "n", "v" }, "<leader>gr", ":Gen Review_Code<CR>", { desc = "[R]eview the code" })
     map({ "n", "v" }, "<leader>ge", ":Gen Enhance_Code<CR>", { desc = "Attempt to [E]nhance the code" })

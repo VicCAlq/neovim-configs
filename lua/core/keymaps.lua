@@ -19,7 +19,9 @@ map("n", "N", "Nzzzv", { silent = true })
 
 -- Movement remaps
 map("n", "j", "gj", { desc = "Move cursor down " })
+map("n", "<down>", "gj", { desc = "Move cursor down " })
 map("n", "k", "gk", { desc = "Move cursor up " })
+map("n", "<up>", "gk", { desc = "Move cursor up " })
 
 -- Indent in selection mode
 map("v", "<Tab>", ">gv", { desc = "Indent line" })
