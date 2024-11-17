@@ -194,7 +194,13 @@ return {
       },
       html = { filetypes = { "html", "twig", "hbs" } },
       cssls = {},
-      tailwindcss = {},
+      tailwindcss = {
+        experimental = {
+          classRegex = {
+            "(?:class: ?)(?:'|\"|`)([^\"'`]*)(?:'|\"|`)", -- Twig, looks for string preceded by 'class:'
+          },
+        },
+      },
       dockerls = {},
       sqlls = {},
       terraformls = {},

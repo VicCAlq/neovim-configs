@@ -26,6 +26,11 @@ vim.g.showbreak = "↪"
 -- Useful if you are doing stuff like generating SQL/HTML/XML in strings
 vim.g.vimsyn_embed = "alpPrj"
 
+-- Foldd configs
+vim.o.foldlevel = 99
+vim.o.foldlevelstart = 99
+opt.foldopen = "all"
+
 opt.pumheight = 15
 opt.cmdheight = 1
 opt.numberwidth = 3
@@ -122,6 +127,11 @@ api.nvim_create_autocmd("FileType", {
   end,
 })
 
+-- -- Open folds on buffer loading
+api.nvim_create_autocmd({ "BufEnter", "BufWinEnter", "BufReadPost", "FileReadPost" }, {
+  command = ":silent! %foldopen!",
+})
+
 -- Set local settings for terminal buffers
 vim.api.nvim_create_autocmd("TermOpen", {
   group = vim.api.nvim_create_augroup("custom-term-open", {}),
@@ -146,29 +156,32 @@ api.nvim_create_autocmd({ "VimEnter", "ColorScheme", "ColorSchemePre" }, {
   end,
 })
 
+-- Sets a custom highlight on the line between numbers column and buffer
 api.nvim_create_autocmd({ "BufEnter", "WinEnter" }, {
   callback = function()
-    local separator = " " .. icons.l1 .. " "
-    opt.statuscolumn = '%s%=%#LineNr4#%{(v:relnum >= 4)?v:relnum."'
-      .. separator
-      .. '":""}'
-      .. '%#LineNr3#%{(v:relnum == 3)?v:relnum."'
-      .. separator
-      .. '":""}'
-      .. '%#LineNr2#%{(v:relnum == 2)?v:relnum."'
-      .. separator
-      .. '":""}'
-      .. '%#LineNr1#%{(v:relnum == 1)?v:relnum."'
-      .. separator
-      .. '":""}'
-      .. '%#LineNr0#%{(v:relnum == 0)?v:lnum." '
-      .. separator
-      .. '":""}'
+    if vim.bo.buftype ~= "nofile" then
+      local separator = (" " .. icons.l1 .. " ") or "|"
+      opt.statuscolumn = '%s%=%#LineNr4#%{(v:relnum >= 4)?v:relnum."'
+        .. separator
+        .. '":""}'
+        .. '%#LineNr3#%{(v:relnum == 3)?v:relnum."'
+        .. separator
+        .. '":""}'
+        .. '%#LineNr2#%{(v:relnum == 2)?v:relnum."'
+        .. separator
+        .. '":""}'
+        .. '%#LineNr1#%{(v:relnum == 1)?v:relnum."'
+        .. separator
+        .. '":""}'
+        .. '%#LineNr0#%{(v:relnum == 0)?v:lnum." '
+        .. separator
+        .. '":""}'
 
-    vim.cmd("highlight LineNr0 guifg=#d0e0c0")
-    vim.cmd("highlight LineNr1 guifg=#b0c0b0")
-    vim.cmd("highlight LineNr2 guifg=#90a0a0")
-    vim.cmd("highlight LineNr3 guifg=#657080")
-    vim.cmd("highlight LineNr4 guifg=#405060")
+      vim.cmd("highlight LineNr0 guifg=#d0e0c0")
+      vim.cmd("highlight LineNr1 guifg=#b0c0b0")
+      vim.cmd("highlight LineNr2 guifg=#90a0a0")
+      vim.cmd("highlight LineNr3 guifg=#657080")
+      vim.cmd("highlight LineNr4 guifg=#405060")
+    end
   end,
 })
