@@ -27,9 +27,13 @@ vim.g.showbreak = "↪"
 vim.g.vimsyn_embed = "alpPrj"
 
 -- Foldd configs
-vim.o.foldlevel = 99
-vim.o.foldlevelstart = 99
-opt.foldopen = "all"
+-- vim.o.foldlevel = 99
+opt.foldlevelstart = 99
+opt.foldmethod = "expr"
+opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+opt.foldtext = ""
+opt.fillchars:append("fold: ")
+-- opt.foldopen = "all"
 
 opt.pumheight = 15
 opt.cmdheight = 1
