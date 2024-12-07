@@ -26,6 +26,9 @@ vim.g.showbreak = "↪"
 -- Useful if you are doing stuff like generating SQL/HTML/XML in strings
 vim.g.vimsyn_embed = "alpPrj"
 
+-- Diagnostic option for the prettier inline diagnostics
+vim.diagnostic.config({ virtual_text = false })
+
 -- Foldd configs
 -- vim.o.foldlevel = 99
 opt.foldlevelstart = 99
@@ -157,6 +160,15 @@ api.nvim_create_autocmd({ "VimEnter", "ColorScheme", "ColorSchemePre" }, {
     vim.cmd(":hi EndOfBuffer ctermbg=none guibg=none guisp=none")
     vim.cmd(":hi PmenuSbar ctermbg=none guibg=none guisp=none")
     vim.cmd(":hi NormalNC ctermbg=none guibg=none guisp=none")
+  end,
+})
+
+api.nvim_create_autocmd("BufWritePost", {
+  pattern = { "*.tex" },
+  desc = "Convert tex files to pdf",
+  callback = function()
+    -- vim.cmd(":!pdflatex %")
+    vim.cmd(":!pdflatex -output-directory=/home/vicmca/CodeProjects/Career/CVs %")
   end,
 })
 

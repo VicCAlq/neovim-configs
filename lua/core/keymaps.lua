@@ -18,10 +18,12 @@ map("n", "n", "nzzzv", { silent = true })
 map("n", "N", "Nzzzv", { silent = true })
 
 -- Movement remaps
-map("n", "j", "gj", { desc = "Move cursor down " })
-map("n", "<Down>", "gj", { desc = "Move cursor down " })
-map("n", "k", "gk", { desc = "Move cursor up " })
-map("n", "<Up>", "gk", { desc = "Move cursor up " })
+map("n", "j", "gj", { desc = "Move cursor down" })
+map("n", "<Down>", "gj", { desc = "Move cursor down" })
+map("n", "k", "gk", { desc = "Move cursor up" })
+map("n", "<Up>", "gk", { desc = "Move cursor up" })
+map("n", "H", "^", { desc = "Move to start of line" })
+map("n", "L", "$", { desc = "Move to end of line" })
 
 -- Indent in selection mode
 map("v", "<Tab>", ">gv", { desc = "Indent line" })
@@ -58,7 +60,8 @@ map("n", "<leader>c", ":bp | sp | bn | bd<CR>", { desc = "Close current buffer",
 map("n", "<leader>n", "<cmd>enew<cr>", { desc = "New file" })
 
 -- Code running
-map("n", "<leader>xx", "<cmd>.lua<CR>", { desc = "Execute the current line" })
+map("n", "<leader>xx", ":.lua<CR>", { desc = "Execute the current line" })
+map("v", "<leader>xx", ":lua<CR>", { desc = "Execute the current selection" })
 map("n", "<leader>xf", "<cmd>source %<CR>", { desc = "Source/Run the current file" })
 
 -- Diagnostics navigation
@@ -71,6 +74,10 @@ map("n", "<leader>lq", vim.diagnostic.setloclist, { desc = "Set diagnostic list"
 map("n", "<leader>w", "<cmd>noautocmd w<cr>", { desc = "Save with no autoformatting" })
 map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "[Q]uickfix list" })
 map("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Remove search highlights on <Esc>" })
+map("n", "<leader>r", [[:%s/\<<C-r><C-w>\>//g<Left><Left>]], { desc = "[R]eplace word under cursor for whole buffer" })
+map("n", "<C-c>r", "ciw", { desc = "[C]hange word under cursor" })
+map("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selected line down" })
+map("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selected line up" })
 
 -- VimTabs
 map("n", "<leader>To", "<cmd>tabnew<cr>", { desc = "Create a new Vim tab" })
