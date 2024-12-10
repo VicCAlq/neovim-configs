@@ -163,14 +163,14 @@ api.nvim_create_autocmd({ "VimEnter", "ColorScheme", "ColorSchemePre" }, {
   end,
 })
 
-api.nvim_create_autocmd("BufWritePost", {
-  pattern = { "*.tex" },
-  desc = "Convert tex files to pdf",
-  callback = function()
-    -- vim.cmd(":!pdflatex %")
-    vim.cmd(":!pdflatex -output-directory=/home/vicmca/CodeProjects/Career/CVs %")
-  end,
-})
+-- api.nvim_create_autocmd("BufWritePost", {
+--   pattern = { "*.tex" },
+--   desc = "Convert tex files to pdf",
+--   callback = function()
+--     -- vim.cmd(":!pdflatex %")
+--     vim.cmd(":!pdflatex -output-directory=/home/vicmca/CodeProjects/Career/CVs %")
+--   end,
+-- })
 
 -- Sets a custom highlight on the line between numbers column and buffer
 api.nvim_create_autocmd({ "BufEnter", "WinEnter" }, {
