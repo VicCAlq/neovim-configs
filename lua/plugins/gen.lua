@@ -17,7 +17,7 @@ return {
       extract = "```$filetype\n(.-)```",
     }
     gen.prompts["Generate_Text"] = {
-      prompt = "Generate a text about $input, just output the final text without additional quotes around it:\n$text",
+      prompt = "Do the following: $input. Just output the final text without additional quotes around it:\n$text",
       replace = true,
     }
 
