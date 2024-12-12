@@ -44,8 +44,8 @@ map("t", "<C-k>", "<cmd>wincmd k<cr>", { desc = "Terminal up window navigation" 
 map("t", "<C-l>", "<cmd>wincmd l<cr>", { desc = "Terminal right window navigation" })
 
 -- Splits manipulation
-map("n", "<leader>sv", "<cmd>vsplit<cr>", { desc = "Split vertically" })
-map("n", "<leader>sh", "<cmd>split<cr>", { desc = "Split horizontally" })
+map("n", "<leader>Sv", "<cmd>vsplit<cr>", { desc = "Split vertically" })
+map("n", "<leader>Sh", "<cmd>split<cr>", { desc = "Split horizontally" })
 map("n", "<c-j>", "<c-w><c-j>", { desc = "Switch to split below" })
 map("n", "<c-k>", "<c-w><c-k>", { desc = "Switch to split above" })
 map("n", "<c-l>", "<c-w><c-l>", { desc = "Switch to right split" })

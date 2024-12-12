@@ -7,21 +7,21 @@ return {
   config = function()
     local Path = require("plenary.path")
 
-    vim.keymap.set("n", "<leader>Sl", ":SessionManager load_session<CR>", { desc = "Choose session to [L]oad" })
-    vim.keymap.set("n", "<leader>SL", ":SessionManager load_last_session<CR>", { desc = "[L]oad [L]ast session" })
+    vim.keymap.set("n", "<leader>sl", ":SessionManager load_session<CR>", { desc = "Choose session to [L]oad" })
+    vim.keymap.set("n", "<leader>sL", ":SessionManager load_last_session<CR>", { desc = "[L]oad [L]ast session" })
     vim.keymap.set(
       "n",
-      "<leader>Sd",
+      "<leader>sd",
       ":SessionManager load_current_dir_session<CR>",
       { desc = "Load session related to current [D]irectory" }
     )
     vim.keymap.set(
       "n",
-      "<leader>Sg",
+      "<leader>sg",
       ":SessionManager load_git_session<CR>",
       { desc = "Load session from current [G]it repo" }
     )
-    vim.keymap.set("n", "<leader>Ss", ":SessionManager save_current_session<CR>", { desc = "[S]ave current session" })
+    vim.keymap.set("n", "<leader>ss", ":SessionManager save_current_session<CR>", { desc = "[S]ave current session" })
 
     return {
       sessions_dir = Path:new(vim.fn.stdpath("data"), "sessions"), -- The directory where the session files will be saved.
