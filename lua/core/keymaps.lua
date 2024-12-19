@@ -93,13 +93,21 @@ map("n", "<leader>Tb", "<cmd>tabp<cr>", { desc = "Go to previous Vim Tab" })
 -- Easily hit escape in terminal mode.
 map("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Escape terminal mode" })
 -- Open a terminal at the bottom of the screen with a fixed height.
+local job_id = 0
 map("n", "<leader>ts", function()
   vim.cmd.new()
   vim.cmd.wincmd("J")
   vim.api.nvim_win_set_height(0, 10)
   vim.wo.winfixheight = true
   vim.cmd.terminal()
+
+  job_id = vim.bo.channel
 end, { desc = "Open a standard terminal at screen bottom" })
+
+map("n", "<leader>trr", function()
+  print(vim.bo.path)
+  vim.fn.chansend(job_id, string.format("pdflatex -output-directory=$(pwd)/CVs %s \r\n", vim.api.nvim_buf_get_name(0)))
+end, { desc = "[R]un command in [T]erminal" })
 
 -- NetRW mappings (in case NeoTree is disabled for some reason)
 if not utils.is_available("neo-tree.nvim") then

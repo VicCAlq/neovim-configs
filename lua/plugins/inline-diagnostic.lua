@@ -4,7 +4,7 @@ return {
   priority = 1000, -- needs to be loaded in first
   config = function()
     require("tiny-inline-diagnostic").setup({
-      preset = "ghost", -- Can be: "modern", "classic", "minimal", "ghost", "simple", "nonerdfont"
+      preset = "classic", -- Can be: "modern", "classic", "minimal", "ghost", "simple", "nonerdfont"
       hi = {
         error = "DiagnosticError",
         warn = "DiagnosticWarn",
@@ -17,6 +17,12 @@ return {
       options = {
         -- Show the source of the diagnostic.
         show_source = true,
+
+        -- Use your defined signs in the diagnostic config table.
+        use_icons_from_diagnostic = false,
+
+        -- Add messages to the diagnostic when multilines is enabled
+        add_messages = true,
 
         -- Throttle the update of the diagnostic when moving cursor, in milliseconds.
         -- You can increase it if you have performance issues.
@@ -43,7 +49,7 @@ return {
           --    - wrap: when the message is too long, it is then displayed on multiple lines.
           --    - none: the message will not be truncated.
           --    - oneline: message will be displayed entirely on one line.
-          mode = "wrap",
+          mode = "oneline",
         },
 
         -- Format the diagnostic message.

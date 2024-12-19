@@ -49,6 +49,7 @@ return {
         { "<leader>T", group = "Vim [T]abs" },
         { "<leader>S", group = "[S]plits" },
         { "<leader>t", group = "[T]erminals" },
+        { "<leader>tr", group = "[R]un in [T]erminal" },
         { "<leader>x", group = "E[X]ecute" },
         { "<leader>l", group = "[L]SP actions" },
         { "<leader>s", group = "[S]essions" },
