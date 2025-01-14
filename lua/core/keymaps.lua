@@ -114,3 +114,8 @@ if not utils.is_available("neo-tree.nvim") then
   map("n", "<leader>e", "<cmd>Vex<cr><cmd>cd %:h<cr>", { desc = "Opens NetRW on current buffer's location" })
   map("n", "<leader>o", "<cmd>Lex<cr><cmd>cd %:h<cr>", { desc = "Opens NetRW on current buffer's location" })
 end
+
+-- Plugin maps
+
+-- DAP
+map("n", "<leader>çç", ":lua require('dap') <CR>", { desc = "Loads DAP" })

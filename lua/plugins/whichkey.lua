@@ -45,7 +45,7 @@ return {
       },
       wk.add({
         { "<leader>f", group = "[F]ind (telescope)" },
-        { "<leader>d", group = "[D]iagnostics" },
+        { "<leader>d", group = "[D]ebugginhg and [D]iagnostics" },
         { "<leader>T", group = "Vim [T]abs" },
         { "<leader>S", group = "[S]plits" },
         { "<leader>t", group = "[T]erminals" },
@@ -56,7 +56,6 @@ return {
         { "<leader>g", group = "[G]enAI" },
         { "<leader>b", group = "[B]uffers" },
         { "<leader>C", group = "[C]olors" },
-        { "<leader>D", group = "[D]AP " },
         -- 	{ "<leader>e", group = "File Tree" },
         -- 	{ "<leader>u", group = "Undotree" },
         -- 	{ "<leader>o", group = "Options Commands" },
