@@ -26,9 +26,11 @@ return {
             return require("ufo")
               .getFolds(bufnr, "lsp")
               :catch(function(err)
+                require("ufo").openAllFolds()
                 return handleFallbackException(bufnr, err, "treesitter")
               end)
               :catch(function(err)
+                require("ufo").openAllFolds()
                 return handleFallbackException(bufnr, err, "indent")
               end)
           end

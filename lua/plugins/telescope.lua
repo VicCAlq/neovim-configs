@@ -135,6 +135,7 @@ return {
       vim.keymap.set("n", "<leader>ft", function()
         builtin.colorscheme({ enable_preview = true })
       end, { desc = "[F]ind [T]hemes" })
+      vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "[F]ind [B]uffers" })
       vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "[F]ind [H]elp files" })
       vim.keymap.set("n", "<leader>fk", builtin.keymaps, { desc = "[F]ind [K]eymaps" })
       vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "[F]ind [F]iles" })

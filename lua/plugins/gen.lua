@@ -7,12 +7,17 @@ return {
     local map = vim.keymap.set
 
     gen.prompts["Generate_Code"] = {
-      prompt = "Generate a code that will $input. Only output the result in format ```$filetype\n...\n```\n",
+      prompt = "Generate $input. Only output the result in format ```$filetype\n...\n```\n",
+      replace = true,
+      extract = "```$filetype\n(.-)```",
+    }
+    gen.prompts["Generate_From_Code"] = {
+      prompt = "Generate $input given the following code: $text. Only output the result in format ```$filetype\n...\n```\n",
       replace = true,
       extract = "```$filetype\n(.-)```",
     }
     gen.prompts["Generate_Text"] = {
-      prompt = "Generate a text about $input, just output the final text without additional quotes around it:\n$text",
+      prompt = "Do the following: $input. Just output the final text without additional quotes around it:\n$text",
       replace = true,
     }
 
@@ -30,9 +35,10 @@ return {
     map({ "n", "v" }, "<leader>gT", ":Gen Make_Table<CR>", { desc = "Format to markdown [T]able" })
     map({ "n", "v" }, "<leader>gg", ":Gen Generate_Code<CR>", { desc = "[G]enerate code that..." })
     map({ "n", "v" }, "<leader>gt", ":Gen Generate_Text<CR>", { desc = "[G]enerate [T]ext that..." })
+    map({ "n", "v" }, "<leader>gf", ":Gen Generate_From_Code<CR>", { desc = "Generate [F]rom this code" })
 
     require("gen").setup({
-      model = "qwen2:1.5b", -- The default model to use.
+      model = "qwen2.5-coder:1.5b", -- The default model to use.
       quit_map = "q", -- set keymap for close the response window
       retry_map = "<c-r>", -- set keymap to re-send the current prompt
       accept_map = "<c-cr>", -- set keymap to replace the previous selection with the last result

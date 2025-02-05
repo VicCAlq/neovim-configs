@@ -8,10 +8,12 @@ return {
 
     notify.setup({
       minimum_width = 50,
+      render = "compact",
       background_colour = "#1d2021",
-      stages = "fade",
-      timeout = 2000,
-      fps = 60,
+      stages = "fade_in_slide_out",
+      timeout = 250,
+      fps = 30,
+      top_down = false,
     })
   end,
 }
