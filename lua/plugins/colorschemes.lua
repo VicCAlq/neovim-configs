@@ -12,6 +12,27 @@ return {
     end,
   },
   {
+    "vague2k/vague.nvim",
+    config = function()
+      require("vague").setup({
+        -- optional configuration here
+        transparent = true,
+        style = { -- Set things to bold or italic. "none" is the default
+          -- builtin_functions = "none", -- "bold "italic"
+        },
+        colors = { -- Override colors here
+          -- bg = #111,
+        },
+      })
+    end,
+    event = "ColorSchemePre",
+    priority = 1000,
+    init = function()
+      vim.cmd.colorscheme("cayu")
+      utils.set_new_hl()
+    end,
+  },
+  {
     "rebelot/kanagawa.nvim",
     name = "kanagawa",
     event = "ColorSchemePre",

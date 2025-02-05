@@ -109,6 +109,20 @@ opt.writebackup = true
 -- Disable swap file, allows file to edited by different windows
 opt.swapfile = false
 
+-- Add defold scripts as Lua files
+vim.filetype.add({
+  extension = {
+    ["script"] = "lua",
+  },
+})
+
+-- Add .http as HTTP files
+vim.filetype.add({
+  extension = {
+    ["http"] = "http",
+  },
+})
+
 -- Keep cursor unchanged after quiting
 api.nvim_create_autocmd("ExitPre", {
   group = vim.api.nvim_create_augroup("Exit", { clear = true }),
