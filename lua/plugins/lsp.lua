@@ -27,6 +27,47 @@ return {
   },
   config = function()
     require("lspconfig.ui.windows").default_options.border = "rounded"
+
+    require("lspconfig").lua_ls.setup({
+      on_init = function(client)
+        if client.workspace_folders then
+          local path = client.workspace_folders[1].name
+          if
+            path ~= vim.fn.stdpath("config")
+            and (vim.loop.fs_stat(path .. "/.luarc.json") or vim.loop.fs_stat(path .. "/.luarc.jsonc"))
+          then
+            return
+          end
+        end
+
+        client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
+          runtime = {
+            -- Tell the language server which version of Lua you're using
+            -- (most likely LuaJIT in the case of Neovim)
+            version = "LuaJIT",
+          },
+          -- Make the server aware of Neovim runtime files
+          workspace = {
+            checkThirdParty = false,
+            library = {
+              vim.env.VIMRUNTIME,
+              -- Depending on the usage, you might want to add additional paths here.
+              -- "${3rd}/luv/library"
+              -- "${3rd}/busted/library",
+            },
+            -- or pull in all of 'runtimepath'. NOTE: this is a lot slower and will cause issues when working on your own configuration (see https://github.com/neovim/nvim-lspconfig/issues/3189)
+            -- library = vim.api.nvim_get_runtime_file("", true)
+          },
+        })
+      end,
+      settings = {
+        Lua = {
+          cmd = { "/data/data/com.termux/files/usr/bin/lua-language-server" },
+          filetypes = { "lua", "luau" },
+          runtime = { version = "LuaJIT" },
+        },
+      },
+    })
     -- Brief aside: **What is LSP?**
     --
     -- LSP is an initialism you"ve probably heard, but might not understand what it is.
@@ -167,7 +208,7 @@ return {
       -- clangd = {},
       -- gopls = {},
       -- pyright = {},
-      rust_analyzer = {},
+      -- rust_analyzer = {},
       -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
       --
       -- Some languages (like typescript) have entire language plugins that can be useful:
@@ -175,7 +216,7 @@ return {
       --
       -- But for many setups, the LSP (`tsserver`) will work just fine
       -- tsserver = {},
-      ruff = {},
+      -- ruff = {},
       pylsp = {
         settings = {
           pylsp = {
@@ -202,35 +243,38 @@ return {
         },
       },
       dockerls = {},
-      sqlls = {},
+      -- sqlls = {},
       terraformls = {},
       jsonls = {},
       yamlls = {},
 
-      lua_ls = {
-        -- cmd = {...},
-        -- filetypes = { ...},
-        -- capabilities = {},
-        settings = {
-          Lua = {
-            completion = {
-              callSnippet = "Replace",
-            },
-            runtime = { version = "LuaJIT" },
-            workspace = {
-              checkThirdParty = false,
-              library = {
-                "${3rd}/luv/library",
-                unpack(vim.api.nvim_get_runtime_file("", true)),
-              },
-            },
-            diagnostics = { disable = { "missing-fields" } },
-            format = {
-              enable = false,
-            },
-          },
-        },
-      },
+      -- lua_ls = {
+      --   -- cmd = {...},
+      --   -- filetypes = { ...},
+      --   -- capabilities = {},
+      --   -- mason = "no",
+      --   -- cmd = "/data/data/com.termux/files/usr/bin/lua-language-server",
+      --   -- filetypes = { "lua", "luau" },
+      --   settings = {
+      --     Lua = {
+      --       completion = {
+      --         callSnippet = "Replace",
+      --       },
+      --       runtime = { version = "LuaJIT" },
+      --       workspace = {
+      --         checkThirdParty = false,
+      --         library = {
+      --           "${3rd}/luv/library",
+      --           unpack(vim.api.nvim_get_runtime_file("", true)),
+      --         },
+      --       },
+      --       diagnostics = { disable = { "missing-fields" } },
+      --       format = {
+      --         enable = false,
+      --       },
+      --     },
+      --   },
+      -- },
     }
 
     -- Ensure the servers and tools above are installed
@@ -245,7 +289,7 @@ return {
     -- for you, so that they are available from within Neovim.
     local ensure_installed = vim.tbl_keys(servers or {})
     vim.list_extend(ensure_installed, {
-      "stylua", -- Used to format Lua code
+      -- "stylua", -- Used to format Lua code
     })
     require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 

@@ -136,7 +136,7 @@ return {
   { "fengzhiken/ceon.nvim", name = "ceon", event = "ColorSchemePre", priority = 1000 },
   { "NephIapalucci/onedarker-pro.nvim", name = "onedarker-pro", event = "ColorSchemePre", priority = 1000 },
   { "Everblush/nvim", name = "everblush", event = "ColorSchemePre", priority = 1000 },
-  { "hehaowen00/darkest-one", name = "darkest-one", event = "ColorSchemePre", priority = 1000 },
+  -- { "hehaowen00/darkest-one", name = "darkest-one", event = "ColorSchemePre", priority = 1000 },
   { "def-SpaceWar/blazing.nvim", name = "blazing", event = "ColorSchemePre", priority = 1000 },
   { "mikesmithgh/gruvsquirrel.nvim", name = "gruvsquirrel", event = "ColorSchemePre", priority = 1000 },
   { "dotsilas/darcubox-nvim", name = "darcubox", event = "ColorSchemePre", priority = 1000 },
