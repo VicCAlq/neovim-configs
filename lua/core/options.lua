@@ -48,7 +48,7 @@ opt.sidescrolloff = 5
 
 -- Behaviour settings
 opt.number = true
-opt.relativenumber = true
+opt.relativenumber = false
 opt.showcmd = true
 opt.showmode = false
 opt.termguicolors = true
@@ -178,26 +178,40 @@ api.nvim_create_autocmd({ "VimEnter", "ColorScheme", "ColorSchemePre" }, {
 })
 
 -- Sets a custom highlight on the line between numbers column and buffer
+-- api.nvim_create_autocmd({ "BufEnter", "WinEnter" }, {
+--   callback = function()
+--     if vim.bo.buftype ~= "nofile" then
+--       local separator = (" " .. icons.l1 .. " ") or "|"
+--       -- stylua: ignore start
+--       opt.statuscolumn =
+--         '%s%=%#LineNr4#%{(v:relnum >= 4)?v:relnum."' .. separator .. '":""}'
+--         .. '%#LineNr3#%{(v:relnum == 3)?v:relnum."' .. separator .. '":""}'
+--         .. '%#LineNr2#%{(v:relnum == 2)?v:relnum."' .. separator .. '":""}'
+--         .. '%#LineNr1#%{(v:relnum == 1)?v:relnum."' .. separator .. '":""}'
+--         .. '%#LineNr0#%{(v:relnum == 0)?v:lnum." ' .. separator .. '":""}'
+--       -- stylua: ignore end
+--       vim.cmd("highlight LineNr0 guifg=#d0e0c0")
+--       vim.cmd("highlight LineNr1 guifg=#b0c0b0")
+--       vim.cmd("highlight LineNr2 guifg=#90a0a0")
+--       vim.cmd("highlight LineNr3 guifg=#657080")
+--       vim.cmd("highlight LineNr4 guifg=#405060")
+--     end
+--   end,
+-- })
+
+-- Sets a custom highlight on the line between numbers column and buffer
 api.nvim_create_autocmd({ "BufEnter", "WinEnter" }, {
   callback = function()
     if vim.bo.buftype ~= "nofile" then
       local separator = (" " .. icons.l1 .. " ") or "|"
-      opt.statuscolumn = '%s%=%#LineNr4#%{(v:relnum >= 4)?v:relnum."'
-        .. separator
-        .. '":""}'
-        .. '%#LineNr3#%{(v:relnum == 3)?v:relnum."'
-        .. separator
-        .. '":""}'
-        .. '%#LineNr2#%{(v:relnum == 2)?v:relnum."'
-        .. separator
-        .. '":""}'
-        .. '%#LineNr1#%{(v:relnum == 1)?v:relnum."'
-        .. separator
-        .. '":""}'
-        .. '%#LineNr0#%{(v:relnum == 0)?v:lnum." '
-        .. separator
-        .. '":""}'
-
+      -- stylua: ignore start
+      opt.statuscolumn = 
+        '%s%=%#LineNr4#%{(v:relnum >= 4)?v:lnum."' .. separator .. '":""}'
+        .. '%#LineNr3#%{(v:relnum == 3)?v:lnum."' .. separator .. '":""}'
+        .. '%#LineNr2#%{(v:relnum == 2)?v:lnum."' .. separator .. '":""}'
+        .. '%#LineNr1#%{(v:relnum == 1)?v:lnum."' .. separator .. '":""}'
+        .. '%#LineNr0#%{(v:relnum == 0)?v:lnum." ' .. separator .. '":""}'
+      -- stylua: ignore end
       vim.cmd("highlight LineNr0 guifg=#d0e0c0")
       vim.cmd("highlight LineNr1 guifg=#b0c0b0")
       vim.cmd("highlight LineNr2 guifg=#90a0a0")
