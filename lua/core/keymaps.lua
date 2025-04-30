@@ -60,8 +60,27 @@ map("n", "<leader>sr", "<C-w>=", { desc = "Resize splits equally" })
 --  NOTE: buffer cycling handled by BufferLine now
 -- map("n", "[b", "<cmd>bprevious<cr>", { desc = "Go to previous buffer" })
 -- map("n", "]b", "<cmd>bnext<cr>", { desc = "Go to next buffer" })
+map("n", "<leader>bs", ":split<CR>", { desc = "Split horizontally", remap = true, silent = true })
+map("n", "<leader>bv", ":vs<CR>", { desc = "Split vertically", remap = true, silent = true })
+map("n", "<leader>be", "<C-w>=", { desc = "Equalize buffer sizes", remap = true, silent = true })
 map("n", "<leader>c", ":bp | sp | bn | bd<CR>", { desc = "Close current buffer", remap = true, silent = true })
+map("n", "<leader>bC", ":bd!<CR>", { desc = "Close current buffer without saving", remap = true, silent = true })
 map("n", "<leader>n", "<cmd>enew<cr>", { desc = "New file" })
+
+-- Search navigation
+local mark_search_keys = {
+  ["/"] = "Search forward",
+  ["?"] = "Search backward",
+  ["*"] = "Search current word forward",
+  ["#"] = "Search current word backward",
+  ["̉£"] = "Search current word backward",
+  ["g*"] = "Search current partial word forward",
+  ["g#"] = "Search current partial word backward",
+  ["g£"] = "Search current partial word backward",
+}
+for key, desc in pairs(mark_search_keys) do
+  map("n", key, "ms" .. key, { desc = desc })
+end
 
 -- Code running
 map("n", "<leader>xx", ":.lua<CR>", { desc = "Execute the current line" })
@@ -119,3 +138,8 @@ end
 
 -- DAP
 map("n", "<leader>çç", ":lua require('dap') <CR>", { desc = "Loads DAP" })
+
+-- External commands
+
+-- live-server
+map("n", "<leader>xl", ":term live-server<CR>", { desc = "Starts live-server from current working directory" })

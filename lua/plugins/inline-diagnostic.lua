@@ -36,7 +36,7 @@ return {
         multiple_diag_under_cursor = false,
 
         -- Enable diagnostic message on all lines.
-        multilines = false,
+        multilines = true,
 
         -- Show all diagnostics on the cursor line.
         show_all_diags_on_cursorline = false,
@@ -61,7 +61,7 @@ return {
 
         --- Enable it if you want to always have message with `after` characters length.
         break_line = {
-          enabled = false,
+          enabled = true,
           after = 30,
         },
 
